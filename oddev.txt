@@ -1,9 +1,0 @@
-CREATE OR REPLACE PROCEDURE even_odd(n IN NUMBER) AS
-BEGIN
-    IF MOD(n, 2) = 0 THEN
-        DBMS_OUTPUT.PUT_LINE('Even');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Odd');
-    END IF;
-END;
-/
