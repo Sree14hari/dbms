@@ -1,17 +1,13 @@
-DELIMITER $$
-
-CREATE PROCEDURE reverse_num(IN n INT)
+CREATE OR REPLACE PROCEDURE reverse_num(n IN NUMBER) AS
+    rev NUMBER := 0;
+    rem NUMBER;
 BEGIN
-    DECLARE rev INT DEFAULT 0;
-    DECLARE rem INT;
+    WHILE n > 0 LOOP
+        rem := MOD(n, 10);
+        rev := rev * 10 + rem;
+        n := TRUNC(n / 10);
+    END LOOP;
 
-    WHILE n > 0 DO
-        SET rem = MOD(n, 10);
-        SET rev = rev * 10 + rem;
-        SET n = FLOOR(n / 10);
-    END WHILE;
-
-    SELECT rev AS Reversed;
-END$$
-
-DELIMITER ;
+    DBMS_OUTPUT.PUT_LINE('Reversed = ' || rev);
+END;
+/
