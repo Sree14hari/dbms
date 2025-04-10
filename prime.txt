@@ -1,23 +1,23 @@
-DELIMITER $$
-
-CREATE PROCEDURE is_prime(IN n INT)
+CREATE OR REPLACE PROCEDURE is_prime(n IN NUMBER) AS
+    i NUMBER := 2;
+    flag BOOLEAN := TRUE;
 BEGIN
-    DECLARE i INT DEFAULT 2;
-    DECLARE flag INT DEFAULT 1;
-
-    WHILE i < n DO
-        IF MOD(n, i) = 0 THEN
-            SET flag = 0;
-            LEAVE;
-        END IF;
-        SET i = i + 1;
-    END WHILE;
-
-    IF flag = 1 AND n > 1 THEN
-        SELECT 'Prime';
+    IF n <= 1 THEN
+        flag := FALSE;
     ELSE
-        SELECT 'Not Prime';
+        WHILE i <= n / 2 LOOP
+            IF MOD(n, i) = 0 THEN
+                flag := FALSE;
+                EXIT;
+            END IF;
+            i := i + 1;
+        END LOOP;
     END IF;
-END$$
 
-DELIMITER ;
+    IF flag THEN
+        DBMS_OUTPUT.PUT_LINE('Prime');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Not Prime');
+    END IF;
+END;
+/
