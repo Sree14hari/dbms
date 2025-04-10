@@ -1,0 +1,16 @@
+DELIMITER $$
+
+CREATE PROCEDURE sum_n(IN n INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE s INT DEFAULT 0;
+
+    WHILE i <= n DO
+        SET s = s + i;
+        SET i = i + 1;
+    END WHILE;
+
+    SELECT s AS Sum;
+END$$
+
+DELIMITER ;
