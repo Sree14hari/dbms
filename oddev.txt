@@ -1,0 +1,12 @@
+DELIMITER $$
+
+CREATE PROCEDURE even_odd(IN n INT)
+BEGIN
+    IF MOD(n, 2) = 0 THEN
+        SELECT 'Even';
+    ELSE
+        SELECT 'Odd';
+    END IF;
+END$$
+
+DELIMITER ;
