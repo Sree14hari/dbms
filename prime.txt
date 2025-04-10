@@ -1,0 +1,23 @@
+DELIMITER $$
+
+CREATE PROCEDURE is_prime(IN n INT)
+BEGIN
+    DECLARE i INT DEFAULT 2;
+    DECLARE flag INT DEFAULT 1;
+
+    WHILE i < n DO
+        IF MOD(n, i) = 0 THEN
+            SET flag = 0;
+            LEAVE;
+        END IF;
+        SET i = i + 1;
+    END WHILE;
+
+    IF flag = 1 AND n > 1 THEN
+        SELECT 'Prime';
+    ELSE
+        SELECT 'Not Prime';
+    END IF;
+END$$
+
+DELIMITER ;
