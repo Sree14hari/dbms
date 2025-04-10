@@ -1,22 +1,18 @@
-DELIMITER $$
-
-CREATE PROCEDURE is_armstrong(IN n INT)
+CREATE OR REPLACE PROCEDURE armstrong(n IN NUMBER) AS
+    original NUMBER := n;
+    sum NUMBER := 0;
+    rem NUMBER;
 BEGIN
-    DECLARE original INT DEFAULT n;
-    DECLARE sum INT DEFAULT 0;
-    DECLARE rem INT;
+    WHILE n > 0 LOOP
+        rem := MOD(n, 10);
+        sum := sum + rem * rem * rem;
+        n := TRUNC(n / 10);
+    END LOOP;
 
-    WHILE n > 0 DO
-        SET rem = MOD(n, 10);
-        SET sum = sum + POW(rem, 3);
-        SET n = FLOOR(n / 10);
-    END WHILE;
-
-    IF original = sum THEN
-        SELECT 'Armstrong';
+    IF sum = original THEN
+        DBMS_OUTPUT.PUT_LINE('Armstrong');
     ELSE
-        SELECT 'Not Armstrong';
+        DBMS_OUTPUT.PUT_LINE('Not Armstrong');
     END IF;
-END$$
-
-DELIMITER ;
+END;
+/
