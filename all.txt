@@ -1,0 +1,182 @@
+ ✅ 1. Armstrong Number
+
+DECLARE
+  num NUMBER := 153;
+  temp NUMBER;
+  rem NUMBER;
+  sum NUMBER := 0;
+BEGIN
+  temp := num;
+  WHILE temp > 0 LOOP
+    rem := MOD(temp, 10);
+    sum := sum + rem * rem * rem;
+    temp := temp / 10;
+  END LOOP;
+
+  IF sum = num THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is an Armstrong number');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is not an Armstrong number');
+  END IF;
+END;
+
+
+---
+
+✅ 2. Factorial
+
+DECLARE
+  num NUMBER := 5;
+  fact NUMBER := 1;
+BEGIN
+  FOR i IN 1..num LOOP
+    fact := fact * i;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Factorial is ' || fact);
+END;
+
+
+---
+
+✅ 3. Fibonacci Series
+
+DECLARE
+  a NUMBER := 0;
+  b NUMBER := 1;
+  c NUMBER;
+BEGIN
+  DBMS_OUTPUT.PUT_LINE(a);
+  DBMS_OUTPUT.PUT_LINE(b);
+  FOR i IN 1..8 LOOP
+    c := a + b;
+    DBMS_OUTPUT.PUT_LINE(c);
+    a := b;
+    b := c;
+  END LOOP;
+END;
+
+
+---
+
+✅ 4. Odd or Even
+
+DECLARE
+  num NUMBER := 10;
+BEGIN
+  IF MOD(num, 2) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is Even');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is Odd');
+  END IF;
+END;
+
+
+---
+
+✅ 5. Palindrome
+
+DECLARE
+  num NUMBER := 121;
+  rev NUMBER := 0;
+  temp NUMBER;
+  rem NUMBER;
+BEGIN
+  temp := num;
+  WHILE temp > 0 LOOP
+    rem := MOD(temp, 10);
+    rev := rev * 10 + rem;
+    temp := temp / 10;
+  END LOOP;
+
+  IF rev = num THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is a Palindrome');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is not a Palindrome');
+  END IF;
+END;
+
+
+---
+
+✅ 6. Prime Number
+
+DECLARE
+  num NUMBER := 7;
+  flag BOOLEAN := TRUE;
+BEGIN
+  IF num <= 1 THEN
+    flag := FALSE;
+  ELSE
+    FOR i IN 2..num/2 LOOP
+      IF MOD(num, i) = 0 THEN
+        flag := FALSE;
+        EXIT;
+      END IF;
+    END LOOP;
+  END IF;
+
+  IF flag THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is Prime');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is Not Prime');
+  END IF;
+END;
+
+
+---
+
+✅ 7. Reverse Number
+
+DECLARE
+  num NUMBER := 1234;
+  rev NUMBER := 0;
+  rem NUMBER;
+BEGIN
+  WHILE num > 0 LOOP
+    rem := MOD(num, 10);
+    rev := rev * 10 + rem;
+    num := num / 10;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Reversed number is ' || rev);
+END;
+
+
+---
+
+✅ 8. Sum of N Numbers
+
+DECLARE
+  n NUMBER := 10;
+  sum NUMBER := 0;
+BEGIN
+  FOR i IN 1..n LOOP
+    sum := sum + i;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Sum = ' || sum);
+END;
+
+
+---
+
+✅ 9. Sum of Odd Digits
+
+DECLARE
+  num NUMBER := 12345;
+  rem NUMBER;
+  sum NUMBER := 0;
+BEGIN
+  WHILE num > 0 LOOP
+    rem := MOD(num, 10);
+    IF MOD(rem, 2) != 0 THEN
+      sum := sum + rem;
+    END IF;
+    num := num / 10;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('Sum of odd digits = ' || sum);
+END;
+
+
+---
+
+
+
