@@ -1,19 +1,15 @@
-DELIMITER $$
-
-CREATE PROCEDURE fibonacci()
+CREATE OR REPLACE PROCEDURE fibonacci AS
+    a NUMBER := 0;
+    b NUMBER := 1;
+    c NUMBER;
+    i NUMBER := 1;
 BEGIN
-    DECLARE a INT DEFAULT 0;
-    DECLARE b INT DEFAULT 1;
-    DECLARE c INT;
-    DECLARE i INT DEFAULT 1;
-
-    WHILE i <= 10 DO
-        SELECT a;
-        SET c = a + b;
-        SET a = b;
-        SET b = c;
-        SET i = i + 1;
-    END WHILE;
-END$$
-
-DELIMITER ;
+    WHILE i <= 10 LOOP
+        DBMS_OUTPUT.PUT_LINE(a);
+        c := a + b;
+        a := b;
+        b := c;
+        i := i + 1;
+    END LOOP;
+END;
+/
