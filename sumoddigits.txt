@@ -1,0 +1,17 @@
+DELIMITER $$
+
+CREATE PROCEDURE sum_digits(IN n INT)
+BEGIN
+    DECLARE sum INT DEFAULT 0;
+    DECLARE rem INT;
+
+    WHILE n > 0 DO
+        SET rem = MOD(n, 10);
+        SET sum = sum + rem;
+        SET n = FLOOR(n / 10);
+    END WHILE;
+
+    SELECT sum AS Digit_Sum;
+END$$
+
+DELIMITER ;
